@@ -118,16 +118,10 @@ impl Component for Environment {
                     self.step()
                 }
             },
-            Msg::Stop => {
-                self.active = false;
-            },
-            Msg::Start => {
-                self.active = true;
-            },
+            Msg::Stop => self.active = false,
+            Msg::Start => self.active = true,
             Msg::Step => self.step(),
-            Msg::Random => {
-                self.create_random();
-            }, 
+            Msg::Random => self.create_random(), 
         }
         true
     }
