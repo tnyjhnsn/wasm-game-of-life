@@ -15,6 +15,7 @@ enum Cell {
 #[allow(dead_code)]
 pub struct Environment {
     active: bool,
+    counter: u64,
     width: u32,
     height: u32,
     cells: Vec<Cell>,
@@ -62,6 +63,7 @@ impl Environment {
                 next[index] = next_cell;
             }
         }
+        self.counter += 1;
         self.cells = next;
     }
 
@@ -74,6 +76,7 @@ impl Environment {
                     Cell::Dead
                 }
             }).collect();
+        self.counter += 1;
         self.cells = cells;
     }
 }
@@ -99,6 +102,7 @@ impl Component for Environment {
 
         Environment {
             active: false,
+            counter: 0,
             width,
             height,
             cells: vec![Cell::Dead; (width * height) as usize],
@@ -114,12 +118,16 @@ impl Component for Environment {
                     self.step()
                 }
             },
-            Msg::Stop => self.active = false,
-            Msg::Start => self.active = true,
+            Msg::Stop => {
+                self.active = false;
+            },
+            Msg::Start => {
+                self.active = true;
+            },
             Msg::Step => self.step(),
             Msg::Random => {
                 self.create_random();
-            }
+            }, 
         }
         true
     }
@@ -138,10 +146,26 @@ impl Component for Environment {
                         { for self.cells.iter().map(display_cell) }
                     </div>
                 </section>
-                <button class="button" onclick=self.link.callback(|_| Msg::Random)>{ "Random" }</button>
-                <button class="button" onclick=self.link.callback(|_| Msg::Start)>{ "Start" }</button>
-                <button class="button" onclick=self.link.callback(|_| Msg::Stop)>{ "Stop" }</button>
-                <button class="button" onclick=self.link.callback(|_| Msg::Step)>{ "Step" }</button>
+                <button 
+                    class="button"
+                    disabled={ self.active }
+                    onclick=self.link.callback(|_| Msg::Random)>{ "Random" }
+                </button>
+                <button 
+                    class="button"
+                    disabled={ self.active || self.counter == 0 }
+                    onclick=self.link.callback(|_| Msg::Start)>{ "Start" }
+                </button>
+                <button 
+                    class="button"
+                    disabled={ !self.active }
+                    onclick=self.link.callback(|_| Msg::Stop)>{ "Stop" }
+                </button>
+                <button 
+                    class="button"
+                    disabled={ self.active || self.counter == 0 }
+                    onclick=self.link.callback(|_| Msg::Step)>{ "Step" }
+                </button>
             </div>
 
         }
