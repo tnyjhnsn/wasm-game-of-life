@@ -167,9 +167,7 @@ impl Component for Environment {
 }
 
 fn display_cell(cell: &Cell) -> Html {
-    let cell_status = {
-        if *cell == Cell::Alive { "alive" } else { "dead" }
-    };
+    let cell_status = if *cell == Cell::Alive { "alive" } else { "dead" };
     html! {
         <div class=("cell", cell_status)></div>
     }
