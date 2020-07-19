@@ -1,19 +1,17 @@
 # wasm-game-of-life
 
-Play [Game of Life](http://www.tosp.net.au/game-of-life/)
+[View the Production Version](http://www.tosp.net.au/game-of-life/)
 
 ## About
 
-This is a Rust learning project, using Yew for the frontend.
-The scaffold is also setup with Tailwindcss but because that was
-overkill for this project, it has been commented out in Webpack and
-a simple css file was used instead.
+This is a Rust/WASM learning project, using Yew for the frontend. HTML markup in Yew uses a syntax similar to JSX. I also added Tailwindcss to the scaffold, but because that was
+overkill for this project, it was disabled in Webpack in favour of a simple css file.
 
-### Inspiration
+### Inspiration & acknowledgements
 
-* [Rust/Yew Scaffold](https://github.com/yewstack/yew-wasm-pack-template)
-* [Yew's Interval Service](https://github.com/huangjj27/game-of-life)
-* [Implementing Game of Life logic](https://rustwasm.github.io/docs/book/game-of-life/implementing.html)
+* Original [Rust/Yew Scaffold](https://github.com/yewstack/yew-wasm-pack-template)
+* How to implement [Yew's Interval Service](https://github.com/huangjj27/game-of-life)
+* Rust non-Yew [Game of Life tutorial](https://rustwasm.github.io/docs/book/game-of-life/implementing.html)
 
 
 

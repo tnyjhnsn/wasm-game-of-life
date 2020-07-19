@@ -24,26 +24,6 @@ module.exports = (env, argv) => {
             "style-loader",
             "css-loader"
             //"postcss-loader"
-            //{
-            //loader: "postcss-loader",
-            //options: {
-            //ident: "postcss",
-            //plugins: [
-            //require("tailwindcss"),
-            //require("autoprefixer"),
-            //require("@fullhuman/postcss-purgecss")({
-            //content: [
-            //"./src/**/*.rs",
-            //"./dist/**/*.js",
-            //"./static/index.html"
-            //],
-            //defaultExtractor: content => {
-            //return content.match(/[A-z0-9-_:\/]+/g) || [];
-            //}
-            //})
-            //]
-            //}
-            //}
           ]
         }
       ]
